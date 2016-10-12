@@ -25,7 +25,7 @@ module FastConfig
   end
 end
 
-module FastConfigEnv
+module FastConfigByEnv
   def self.extended(main_class)
     configs = YAML.load_file(File.expand_path("config/#{snake_case(main_class)}.yml"))
     configs[ENV['RAILS_ENV']].each{ |k,v| main_class.set(k.to_sym, v) }
